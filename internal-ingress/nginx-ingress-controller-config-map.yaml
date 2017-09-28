@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: internal-ingress
+  labels:
+    app: internal-ingress-lb
+    k8s-addon: ingress-nginx.addons.k8s.io
+data:
+  enable-vts-status: 'true'
+  use-proxy-protocol: "false"
