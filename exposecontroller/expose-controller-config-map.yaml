@@ -13,3 +13,4 @@ data:
   config.yml: |
     domain: theddsandbox.com
     exposer: Ingress
+    watchNamespaces: internal
