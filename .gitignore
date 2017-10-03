@@ -14,4 +14,4 @@ coreos-cluster
 provider.tf
 ami.tf
 tmp/
-.idea
+.idea/*
