@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 cd external
-teardown-external.sh
+./teardown-external.sh
 cd ..
 
 cd internal
-teardown-internal.sh
+./teardown-internal.sh
 cd ..

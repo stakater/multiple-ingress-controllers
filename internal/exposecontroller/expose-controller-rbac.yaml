@@ -5,38 +5,10 @@ metadata:
   namespace: internal
 ---
 apiVersion: rbac.authorization.k8s.io/v1beta1
-kind: ClusterRole
-metadata:
-  name: exposecontroller-clusterrole
-rules:
-  - apiGroups:
-      - ""
-    resources:
-      - services
-    verbs:
-      - list
-      - get
-      - update
-      - patch
-      - watch
-  - apiGroups:
-      - ""
-      - "extensions"
-    resources:
-      - ingresses
-    verbs:
-      - list
-      - get
-      - create
-      - update
-      - patch
-      - delete
-      - watch
----
-apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: Role
 metadata:
-  name: exposecontroller-role
+  # name + namespace + "role"
+  name: exposecontroller-internal-role
   namespace: internal
 rules:
   - apiGroups:
@@ -66,25 +38,41 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: RoleBinding
 metadata:
-  name: exposecontroller-role-nisa-binding
+  name: exposecontroller-internal-role-binding
   namespace: internal
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: exposecontroller-role
+  name: exposecontroller-internal-role
 subjects:
   - kind: ServiceAccount
     name: exposecontroller
     namespace: internal
 ---
 apiVersion: rbac.authorization.k8s.io/v1beta1
-kind: ClusterRoleBinding
+kind: Role
 metadata:
-  name: exposecontroller-clusterrole-nisa-binding
+  name: exposecontroller-default-role
+  namespace: default
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - services
+    verbs:
+      - list
+      - get
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: exposecontroller-default-role-binding
+  # This only grants permissions within the "default" namespace.
+  namespace: default
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: exposecontroller-clusterrole
+  kind: Role
+  name: exposecontroller-default-role
 subjects:
   - kind: ServiceAccount
     name: exposecontroller
