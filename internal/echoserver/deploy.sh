@@ -5,5 +5,4 @@ if ! which -s kubectl; then
   exit 1
 fi
 
-kubectl delete -f k8s.yaml -n=external
-kubectl delete -f external-namespace.yaml
+kubectl apply -f k8s.yaml -n=internal

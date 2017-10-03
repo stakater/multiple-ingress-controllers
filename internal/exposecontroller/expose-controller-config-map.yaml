@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  annotations:
+    fabric8.io/target-platform: kubernetes
+  labels:
+    provider: fabric8
+    project: exposecontroller
+    version: 4.0.197
+    group: io.fabric8.platform.apps
+  name: exposecontroller
+data:
+  config.yml: |
+    domain: theddsandbox.com
+    exposer: Ingress

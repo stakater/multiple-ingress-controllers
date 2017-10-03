@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: exposecontroller
-  namespace: tools
+  namespace: internal
 ---
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRole
@@ -39,6 +39,7 @@ rules:
     resources:
       - ingresses
     verbs:
+      - put
       - create
       - get
       - list
@@ -55,7 +56,7 @@ apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: Role
 metadata:
   name: exposecontroller-role
-  namespace: tools
+  namespace: internal
 rules:
   - apiGroups:
       - ""
@@ -85,7 +86,7 @@ apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: RoleBinding
 metadata:
   name: exposecontroller-role-nisa-binding
-  namespace: tools
+  namespace: internal
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -93,7 +94,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: exposecontroller
-    namespace: tools
+    namespace: internal
 ---
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRoleBinding
@@ -106,4 +107,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: exposecontroller
-    namespace: tools
+    namespace: internal

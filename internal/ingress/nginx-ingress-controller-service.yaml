@@ -20,4 +20,4 @@ spec:
   selector:
     k8s-app: internal-ingress-lb
   loadBalancerSourceRanges:
-    - 138.106.0.0/16
+    - 2.69.164.194/32

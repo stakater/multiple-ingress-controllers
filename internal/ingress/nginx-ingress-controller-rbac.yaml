@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: internal-ingress-serviceaccount
-  namespace: internal-ingress
+  namespace: internal
 ---
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRole
@@ -60,7 +60,7 @@ apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: Role
 metadata:
   name: internal-ingress-role
-  namespace: internal-ingress
+  namespace: internal
 rules:
   - apiGroups:
       - ""
@@ -103,7 +103,7 @@ apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: RoleBinding
 metadata:
   name: internal-ingress-role-nisa-binding
-  namespace: internal-ingress
+  namespace: internal
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -111,7 +111,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: internal-ingress-serviceaccount
-    namespace: internal-ingress
+    namespace: internal
 ---
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRoleBinding
@@ -124,4 +124,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: internal-ingress-serviceaccount
-    namespace: internal-ingress
+    namespace: internal
