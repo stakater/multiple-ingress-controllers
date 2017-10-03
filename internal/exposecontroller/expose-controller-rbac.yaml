@@ -12,46 +12,26 @@ rules:
   - apiGroups:
       - ""
     resources:
-      - configmaps
-      - endpoints
-      - nodes
-      - pods
-      - secrets
-    verbs:
-      - list
-      - watch
-  - apiGroups:
-      - ""
-    resources:
-      - nodes
-    verbs:
-      - get
-  - apiGroups:
-      - ""
-    resources:
       - services
     verbs:
-      - get
       - list
+      - get
+      - update
+      - patch
       - watch
   - apiGroups:
+      - ""
       - "extensions"
     resources:
       - ingresses
     verbs:
-      - put
-      - create
-      - patch
-      - get
       - list
+      - get
+      - create
+      - update
+      - patch
+      - delete
       - watch
-  - apiGroups:
-      - ""
-    resources:
-        - events
-    verbs:
-        - create
-        - patch
 ---
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: Role
@@ -62,36 +42,25 @@ rules:
   - apiGroups:
       - ""
     resources:
-      - configmaps
-      - pods
-      - secrets
-      - namespaces
+      - services
     verbs:
+      - list
       - get
-  - apiGroups:
-      - ""
-    resources:
-      - configmaps
-    verbs:
-      - create
-  - apiGroups:
-      - ""
-    resources:
-      - endpoints
-    verbs:
-      - get
-      - create
       - update
+      - patch
+      - watch
   - apiGroups:
+      - ""
       - "extensions"
     resources:
       - ingresses
     verbs:
-      - put
-      - create
-      - patch
-      - get
       - list
+      - get
+      - create
+      - update
+      - patch
+      - delete
       - watch
 ---
 apiVersion: rbac.authorization.k8s.io/v1beta1
