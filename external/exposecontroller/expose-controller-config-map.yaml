@@ -12,4 +12,4 @@ metadata:
 data:
   config.yml: |
     domain: theddsandbox.com
-    exposer: Ingres
+    exposer: Ingress
