@@ -60,7 +60,7 @@ spec:
         volumeMounts:
         - mountPath: /etc/exposecontroller
           name: config-volume
-      serviceAccountName: exposecontroller
+      serviceAccountName: int-exposecontroller
       volumes:
       - configMap:
           name: exposecontroller
