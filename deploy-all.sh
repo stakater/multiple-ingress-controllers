@@ -7,3 +7,7 @@ cd ..
 cd internal
 ./deploy-internal.sh
 cd ..
+
+cd externaldns
+./deploy-externaldns.sh
+cd ..
