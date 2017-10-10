@@ -19,9 +19,16 @@ down to specific ips only; whereas the ELB in front of "external ingress control
 
 ### Components
 
-The solution is composed of three components:
+The solution is composed of following components:
 
 1. nginx-ingress-controller: ingress controller
-2. exposecontroller: from fabric8 which creates ingress from service on the fly
-3. external-dns: creates dns entry in Route53
+2. [exposecontroller](https://github.com/fabric8io/exposecontroller): from fabric8 which creates ingress from service on the fly
+3. [external-dns](https://github.com/kubernetes-incubator/external-dns): creates dns entry in Route53
+4. echoserver: a sample app; just for the sake of testing
 
+To limit access you need to add following to the `nginx-ingress-controller-service.yaml`
+
+```
+  loadBalancerSourceRanges:
+    - 83.226.238.69/32
+```
