@@ -36,3 +36,11 @@ To limit access you need to add following to the `nginx-ingress-controller-servi
   loadBalancerSourceRanges:
     - 83.226.238.69/32
 ```
+
+### Troubleshooting
+
+Create certificate in AWS certificate manager and update its ARN to `internal/ingress/nginx-ingress-controller-service.yaml` and `external/ingress/nginx-ingress-controller-service.yaml`
+
+```
+  service.beta.kubernetes.io/aws-load-balancer-ssl-cert: <certificate-arn>
+```
