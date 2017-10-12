@@ -11,5 +11,5 @@ metadata:
   name: exposecontroller
 data:
   config.yml: |
-    domain: theddsandbox.com
+    domain: <%DOMAIN%>
     exposer: Ingress
