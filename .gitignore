@@ -15,3 +15,6 @@ provider.tf
 ami.tf
 tmp/
 .idea/*
+*/ingress/nginx-ingress-controller-service.yaml
+externaldns/externaldns-deployment.yaml
+expose-controller-config-map.yaml
